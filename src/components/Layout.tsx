@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { Filter, Lock, Unlock, MoreVertical } from 'lucide-react';
+import { Copy, Filter, Lock, Unlock } from 'lucide-react';
 import { MoreOptionsMenu } from './MoreOptionsMenu';
 
 interface LayoutProps {
@@ -12,6 +12,7 @@ interface LayoutProps {
   onAddClick: () => void;
   onResetClick: () => void;
   onDeleteClick: () => void;
+  onCopyClick: () => void;
 }
 
 export const Layout: React.FC<LayoutProps> = ({
@@ -23,6 +24,7 @@ export const Layout: React.FC<LayoutProps> = ({
   onAddClick,
   onResetClick,
   onDeleteClick,
+  onCopyClick,
 }) => {
   return (
     <div className="min-h-screen bg-gray-100">
@@ -30,6 +32,13 @@ export const Layout: React.FC<LayoutProps> = ({
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           <h1 className="text-lg font-semibold text-gray-900">Bay Management</h1>
           <div className="flex items-center space-x-2">
+            <button
+              onClick={onCopyClick}
+              className="p-2 rounded-full bg-gray-200 hover:bg-gray-300"
+              title="Copy Bays"
+            >
+              <Copy className="w-5 h-5" />
+            </button>
             <button
               onClick={onLockToggle}
               className={`p-2 rounded-full ${
